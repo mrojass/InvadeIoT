@@ -4,15 +4,14 @@
 	<title>InvadeIoT</title>
 	 <script src="../static/js/jquery-1.7.1.min.js"></script>
     <script src="../static/js/jquery.mousewheel-min.js"></script>
-    <script src="../static/js/jquery.terminal-min.js"></script>
+    <script src="../static/js/jquery.terminal-src.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery.terminal.css">
 </head>
 <body>
-
-<h2> D is awesome! </h2>
 <div id="some_id" name="some_id"></div>
 
 <script type="text/javascript">
-	$('#some_id').terminal(function(command, term) {
+$('#some_id').terminal(function(command, term) {
     if (command == 'test') {
         term.echo("you just typed 'test'");
     } else {
