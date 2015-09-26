@@ -2,9 +2,25 @@
 <html>
 <head>
 	<title>InvadeIoT</title>
+	 <script src="../static/js/jquery-1.7.1.min.js"></script>
+    <script src="../static/js/jquery.mousewheel-min.js"></script>
+    <script src="../static/js/jquery.terminal-min.js"></script>
 </head>
 <body>
+
 <h2> D is awesome! </h2>
+<div id="some_id" name="some_id"></div>
+
+<script type="text/javascript">
+	$('#some_id').terminal(function(command, term) {
+    if (command == 'test') {
+        term.echo("you just typed 'test'");
+    } else {
+        term.echo('unknown command');
+    }
+}, { prompt: '>', name: 'test' });
+	
+</script>
 
 </body>
 </html>
