@@ -6,9 +6,13 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
-@app.route('/commands/<command>')
-def commands(command):
-	return command
+@app.route('/level_one')
+def level_one():
+	return render_template("level_one.html")
+
+@app.route('/level_two')
+def level_two():
+	return render_template("level_two.html")
 
 if __name__ == "__main__":
 	app.run(debug=True)
