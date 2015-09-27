@@ -10,6 +10,7 @@
 <body>
 
 <script type="text/javascript">
+var files=["/bin", "/etc", "config", "logs", "sys32"];
 $(function() {
     var anim = false;
     function typed(finish_typing) {
@@ -47,21 +48,62 @@ $(function() {
     });
 
     
-    $('body').terminal(function(cmd, term) {
+       $('body').terminal(function(cmd, term) {
         var finish = false;
         term.set_prompt('> ');
         var args = {command: cmd};
+        if(cmd.toString()=='help'){
+            term.echo(useColor('white', "rm <file>\nls"));
+        }
+        
+        else if(cmd.toString()=='rm logs'){
+            var index = files.indexOf("logs");
+            files.splice(index,1);
+            term.echo(useColor('white', "logs removed"));
+        }
+
+        else if(cmd.toString()=='rm config'){
+            var index = files.indexOf("config");
+            files.splice(index,1);
+            term.echo(useColor('white', "config removed"));
+        }
+
+        else if(cmd.toString()=='rm /bin'){
+            var index = files.indexOf("/bin");
+            files.splice(index,1);
+            term.echo(useColor('white', "/bin removed"));
+        }
+
+        else if(cmd.toString()=='rm /etc'){
+            var index = files.indexOf("/etc");
+            files.splice(index,1);
+            term.echo(useColor('white', "/etc removed"));
+        }
+
+        else if(cmd.toString()=='rm sys32'){
+            var index = files.indexOf("sys32");
+            files.splice(index,1);
+            term.echo(useColor('red', "honeypot:1339:ERROR.UNAUTHORIZED PRESENCE DETECTED.DETAILS REPORTED:end"));
+        }
+
+        else if(cmd.toString()=='ls'){
+            for(i=0; i<files.length; i++){
+                term.echo(useColor('white', files[i]));
+            }
+        }
+
+        else{
+            term.echo(useColor('red', "invalid"));
+        }
+
 
     }, {
         name: 'xxx',
         greetings: null,
-        width: 500,
-        height: 300,
         onInit: function(term) {
             // first question
-            var msg = "Level 3";
-            typed_message(term, msg, 50, function() {
-                typed_prompt(term, "what's your name:", 100);
+            var msg = "Evil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. A classic phishing scam should do the trick! First, I need to replicate Evil Corp's database log-in site. \n for help use type help";
+            typed_message(term, msg, 30, function() {
             });
         },
         keydown: function(e) {
@@ -73,6 +115,22 @@ $(function() {
     });
 });
 	
+function useColor(color, text){
+    var string;
+    switch(color){
+        case 'red': string = "\033[0;31m" + text + "\033[0m";
+            break;
+        case 'green': string = "\033[0;32m" + text + "\033[0m";
+            break;
+        case 'white': string = "\033[1;37m" + text + "\033[0m";
+            break;
+        default:
+            break;
+    }
+
+    return string;
+}
+
 </script>
 
 </body>
