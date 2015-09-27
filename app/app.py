@@ -6,6 +6,10 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
+@app.route('/level1',methods=['POST','GET'])
+def level1():
+	return render_template('level1.html')
+
 @app.route('/commands/<command>')
 def commands(command):
 	return command
