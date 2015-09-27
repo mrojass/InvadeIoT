@@ -54,23 +54,27 @@ $(function() {
         var args = {command: cmd};
         var help = "wget <url>\nsendmail <email>\nhint"
         if (cmd.toString()=='hint' && step1==false){
-            term.echo(useColor('white',"Evilcorp's url might be http://www.evilcorp.com"));
+            var msg = "\nI know EvilCorp uses http://www.evilcorp.com to access their databases.\n"
+            typed_message(term, msg, 30, function() {
+                });
         }
         else if (cmd.toString()=='hint' && step1==true){
-            term.echo(useColor('white',"Bob's email might be bob@evilcorp.com"));
+            var msg = "\nWhen Bob gave me his business card, his e-mail was bob@evilcorp.com. I just need to send him a link to my website.\n"
+            typed_message(term, msg, 30, function() {
+                });
         }
         else if(cmd.toString() == 'help'){
             term.echo(useColor('white', help));
         }
         else if(cmd.toString() == 'wget http://www.evilcorp.com'){
             step1=true;
-            term.echo(useColor('white',"Cloned http://www.evilcorp.com"));
-            typed_message(term, "\nNow I need to email an unsuspecting low-level executive the link. \nOnce they fall for my trap and log into the website, their account will be mine! \nHmm maybe I can email that douche bag Bob he might still be working at that dump." , 50, function() {
+            var wget_output = "--2020-09-27 04:40:47--  http://www.evilcorp.com/\nResolving www.evilcorp.com (www.evilcorp.com)... 216.58.219.164\nConnecting to www.evilcorp.com (www.evilcorp.com)|216.58.219.164|:80... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: unspecified [text/html]\nSaving to: ‘index.html’[ <=>                     ] 19,232      --.-K/s   in 0.05s\n2015-09-27 04:40:47 (358 KB/s) - ‘index.html’ saved [19232]\n";
+            term.echo(wget_output);
+            typed_message(term, "\nNow I need to email an unsuspecting low-level executive the link. \nOnce they fall for my trap and log into the website, their account will be mine! \nHmm maybe I can email that douche bag Bob he might still be working at that dump.\n" , 50, function() {
             });
         }
         else if (cmd.toString()=='sendmail bob@evilcorp.com' && step1==true){
-            term.echo(useColor('white',"Email sent to bob@evilcorp.com"));
-             typed_message(term, "We sent him the email! In 3 seconds we will be redirected to level2!" , 50, function() {
+            typed_message(term, "\nIf I set up my website at a url that's really similar, I bet he won't even look twice.\n\nFROM: cio@evilcorp.com\nTO: bob@evilcorp.com\n\nHey Bob!\nThere is an emergency on the website. Please login immediately.\nhttp://www.e-vilcorp.com\n\nGot him. His password is his birthday.\n" , 50, function() {
                 setTimeout(function() {
                     window.location.href="{{ url_for('level_two') }}"
                 }, 3000);
