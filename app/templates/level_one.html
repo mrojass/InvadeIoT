@@ -54,6 +54,13 @@ $(function() {
         if(cmd.toString() == 'help'){
             term.echo("help\nwget <url> \nsend <email>");
         }
+        if(cmd.toString() == 'wget http://www.evilcorp.com'){
+            term.echo("Cloned http://www.evilcorp.com");
+            typed_message(term, "Hmmm we got it! Now we have to do something else! ", 50, function() {
+            });
+
+        }
+      
 
 
     }, {
