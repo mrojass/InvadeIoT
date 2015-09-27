@@ -57,7 +57,7 @@ $(function() {
             term.echo(useColor('white',"Evilcorp's url might be http://www.evilcorp.com"));
         }
         else if (cmd.toString()=='hint' && step1==true){
-            term.echo(useColor('white',"Bobs email might be bob@evilcorp.com"));
+            term.echo(useColor('white',"Bob's email might be bob@evilcorp.com"));
         }
         else if(cmd.toString() == 'help'){
             term.echo(useColor('white', help));
@@ -65,7 +65,7 @@ $(function() {
         else if(cmd.toString() == 'wget http://www.evilcorp.com'){
             step1=true;
             term.echo(useColor('white',"Cloned http://www.evilcorp.com"));
-            typed_message(term, "Now I need to email an unsuspecting low-level executive the link. Once they fall for my trap and log into the website, their account will be mine! Hmm maybe I can email that duche bag Bob he might still be working at that dump" , 50, function() {
+            typed_message(term, "\nNow I need to email an unsuspecting low-level executive the link. \nOnce they fall for my trap and log into the website, their account will be mine! \nHmm maybe I can email that douche bag Bob he might still be working at that dump" , 50, function() {
             });
         }
         else if (cmd.toString()=='sendmail bob@evilcorp.com' && step1==true){
@@ -84,7 +84,7 @@ $(function() {
         greetings: null,
         onInit: function(term) {
             // first question
-            var msg = "Evil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. A classic phishing scam should do the trick! First, I need to replicate Evil Corp's database log-in site. \n for help use type help and for a hint type hint";
+            var msg = "LEVEL 1: Phishing for Dummies\n\nEvil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. \nA classic phishing scam should do the trick! \n First, I need to replicate Evil Corp's database log-in site. \n for help use type help and for a hint type hint";
             typed_message(term, msg, 30, function() {
             });
         },

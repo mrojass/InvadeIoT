@@ -12,6 +12,7 @@
 <script type="text/javascript">
 $(function() {
     var anim = false;
+    var hint_count = 0;
     function typed(finish_typing) {
         return function(term, message, delay, finish) {
             anim = true;
@@ -43,11 +44,7 @@ $(function() {
     var typed_message = typed(function(term, message, prompt) {
         term.set_command('');
         term.echo(message)
-        term.set_prompt(prompttyped(function(term, message, prompt) {
-            term.set_command('');
-            term.echo(message);
-            term.set_prompt(prompt);
-        }));
+        term.set_prompt(prompt);
     });
 
     
@@ -58,16 +55,20 @@ $(function() {
         var commands = ["help", "hint", "inject"]
 
         if(cmd == commands[0]) {
-            term.echo("hint \ninject <exploit>");
+            term.echo("hint \ninject <SQL code>");
         } else if (cmd == commands[1]) {
-            term.echo("http://xkcd.com/327")
+            if (hint_count == 1) {
+                term.echo("http://xkcd.com/327");
+            } else if (hint_count == 2) {
+                term.echo("http://bfy.tw/1ztw");
+            }
+            hint_count += 1;
         } else if (cmd.split(" ")[0] == commands[2]) {
             arg = cmd.substr(cmd.indexOf(" ") + 1);
-            var injection_re = new RegExp("(.*?);\s?DROP TABLE Users;\s?--")
+            var injection_re = new RegExp("/(.*?);\s?DROP ALL TABLES;\s?--/g")
             if (injection_re.test(arg)) {
                 term.echo("Dropping the db.");
             } else {
-                console.log(arg)
                 term.echo("Exploit failed. Try again.");
             }
 
@@ -78,12 +79,14 @@ $(function() {
     }, {
         name: 'xxx',
         greetings: null,
-        width: 500,
-        height: 300,
         onInit: function(term) {
             // first question
-            var msg = "Level Two";
+            var msg = "LEVEL 2: DROP the Bomb\n\nNow that I have that idiot's administrative credentials, I can really start doing some damage. \nHmmm it looks like the leaders of Evil Corp are more dumb than I originally thought. This website doesn’t sanitize their input. \nLooks like all I have to do is create an SQL injection to drop all the tables in the database and erase the debt of all of Evil Corp’s innocent victims. \nEvil Corp is making this too easy for me. It’s like taking candy from a baby.\n"
+            typed_message(term, msg, 30, function() {
+            });
+
         },
+
         keydown: function(e) {
             //disable keyboard when animating
             if (anim) {
@@ -92,7 +95,23 @@ $(function() {
         }
     });
 });
-	
+
+function useColor(color, text){
+    var string;
+    switch(color){
+        case 'red': string = "\033[0;31m" + text + "\033[0m";
+            break;
+        case 'green': string = "\033[0;32m" + text + "\033[0m";
+            break;
+        case 'white': string = "\033[1;37m" + text + "\033[0m";
+            break;
+        default:
+            break;
+    }
+
+    return string;
+}
+
 </script>
 
 </body>
