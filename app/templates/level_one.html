@@ -51,6 +51,9 @@ $(function() {
         var finish = false;
         term.set_prompt('> ');
         var args = {command: cmd};
+        if(cmd.toString() == 'help'){
+            typed_message(term,"help",100,function(){});
+        }
 
     }, {
         name: 'xxx',
