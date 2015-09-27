@@ -1,80 +1,35 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>InvadeIoT</title>
-	 <script src="../static/js/jquery-1.7.1.min.js"></script>
-    <script src="../static/js/jquery.mousewheel-min.js"></script>
-    <script src="../static/js/jquery.terminal-src.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/jquery.terminal.css">
+    <meta charset="UTF-8">
+    <title>GoInvade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/media-queries.css" rel="stylesheet" type="text/css">  
 </head>
+
+
 <body>
-<div id="some_id" name="some_id"></div>
+<!-- Title page -->
+<div id="big_container">
+<header>
+  <h1>GoInvade</h1>
+  <p></p>
+<image>
+<p><img src="imag/startbutton.png" width="300" height="150" alt="Apple's logo over the years"></p>
+</header>
+<iframe width="560" height="720" id="bg" src="https://www.youtube.com/embed/rpWrtXyEAN0?modestbranding=1&autohide=1&showinfo=0&autoplay=1&amp;controls=0" frameborder="0" allowfullscreen></iframe>
+</div> 
 
-<script type="text/javascript">
-$(function() {
-    var anim = false;
-    function typed(finish_typing) {
-        return function(term, message, delay, finish) {
-            anim = true;
-            var prompt = term.get_prompt();
-            var c = 0;
-            if (message.length > 0) {
-                term.set_prompt('');
-                var interval = setInterval(function() {
-                    term.insert(message[c++]);
-                    if (c == message.length) {
-                        clearInterval(interval);
-                        // execute in next interval
-                        setTimeout(function() {
-                            // swap command with prompt
-                            finish_typing(term, message, prompt);
-                            anim = false
-                            finish && finish();
-                        }, delay);
-                    }
-                }, delay);
-            }
-        };
-    }
-    var typed_prompt = typed(function(term, message, prompt) {
-        // swap command with prompt
-        term.set_command('');
-        term.set_prompt(message + ' ');
-    });
-    var typed_message = typed(function(term, message, prompt) {
-        term.set_command('');
-        term.echo(message)
-        term.set_prompt(prompt);
-    });
+</section>
 
-    
-    $('body').terminal(function(cmd, term) {
-        var finish = false;
-        term.set_prompt('> ');
-        var args = {command: cmd};
+<section id= "history">
+    <div class="container">
+</section>
 
-    }, {
-        name: 'xxx',
-        greetings: null,
-        width: 500,
-        height: 300,
-        onInit: function(term) {
-            // first question
-            var msg = "Evil Corp has taken too much away from the people. We haven’t opened our eyes to the invisible guys. The top 1% of the top 1%. Those who control everything without being noticed by a single person. The ones who can change everything about your life with nothing more than a thought. And these people, this corporation, they take away so much from us and we don’t even know. Evil Corp must be taught that we’re not sheep. They carelessly handle our information, our whole lives, but we’re not unarmed. We have the skills to take them on. We can make a difference, you can make a difference.";
-            typed_message(term, msg, 50, function() {
-                typed_prompt(term, "what's your name:", 100);
-            });
-        },
-        keydown: function(e) {
-            //disable keyboard when animating
-            if (anim) {
-                return false;
-            }
-        }
-    });
-});
-	
+
 </script>
-
 </body>
 </html>
