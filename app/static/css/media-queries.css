@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* CSS Document*/
+
+@media screen and (max-width: 1060px) {
+  .container {
+        width: 90%; /* static width container always stays at this width no matter what the window size */
+  }
+  
+  .half_container { /* provides a two column presentation */
+        width: 80%;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+  }
+  ul#menu li a.button {
+	/* this padding defines the size of the buttons */
+	padding: 20px 75px; 
+  }
+    
+  iframe{
+        width: 100%;
+  }
+
+  #splash{
+        height: 748px;
+        background-size: 1060px;
+  } 
+  #title-page{
+        padding-top: 200px; /* provides a lot of space above title to view the background image */
+  }
+  #title-page h1 {
+        font-family: 'Roboto', sans-serif; 
+        font-size: 40px; 	
+  }
+  p {
+        font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  ul#menu li a.button {
+	padding: 20px 32px;
+  }
+  img.responsive {
+        width: 100%;
+        height: auto;
+  }
+  #credits img{
+        width: 100px;
+  }
+  #splash{
+        height: 520px;
+        background-size: 767px;
+  }
+  #title-page{
+        padding-top: 0px; /* provides a lot of space above title to view the background image */
+    }
+  #title-page h1 {
+        font-family: 'Roboto', sans-serif; 
+        font-size: 30px; 	
+  }
+  
+}
+@media screen and (max-width: 480px) {
+  ul#menu li a.button {
+        font-size: 0.5em;
+        padding: 20px 10px;
+  }
+  #splash {
+        height: 300px;
+        background-size: 480px;
+    }
+  #title-page{
+        margin-top: 60px; /* provides a lot of space above title to view the background image */
+    }
+  #title-page h1 {
+        font-family: 'Roboto', sans-serif; 
+        font-size: 17px; 	
+  }
+  #title-page img {
+        height: 0px;
+        vidability:hidden; 
+  }
+}
