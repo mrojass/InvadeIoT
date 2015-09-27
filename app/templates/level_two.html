@@ -43,7 +43,10 @@ $(function() {
     var typed_message = typed(function(term, message, prompt) {
         term.set_command('');
         term.echo(message)
-        term.set_prompt(prompt);
+        term.set_prompt(prompttyped(function(term, message, prompt) {
+        term.set_command('');
+        term.echo(message)
+        term.set_prompt(prompt););
     });
 
     
@@ -54,7 +57,8 @@ $(function() {
         var commands = ["help", "hint", "injection"]
 
         if(cmd == commands[0]) {
-            console.log("help");
+            
+            
         } else if (cmd == commands[1]) {
             console.log("hint");
         } else if (cmd == commands[2]) {
@@ -70,10 +74,7 @@ $(function() {
         height: 300,
         onInit: function(term) {
             // first question
-            var msg = "Evil Corp has taken too much away from the people. We haven’t opened our eyes to the invisible guys. The top 1% of the top 1%. Those who control everything without being noticed by a single person. The ones who can change everything about your life with nothing more than a thought. And these people, this corporation, they take away so much from us and we don’t even know. Evil Corp must be taught that we’re not sheep. They carelessly handle our information, our whole lives, but we’re not unarmed. We have the skills to take them on. We can make a difference, you can make a difference.";
-            typed_message(term, msg, 50, function() {
-                typed_prompt(term, "what's your name:", 100);
-            });
+            var msg = "Level Two";
         },
         keydown: function(e) {
             //disable keyboard when animating
