@@ -62,11 +62,12 @@ $(function() {
         } else if (cmd == commands[1]) {
             term.echo("http://xkcd.com/327")
         } else if (cmd.split(" ")[0] == commands[2]) {
-            arg = cmd.split(" ")[1];
-            var injection_re = new RegEx("(.*?);\s?DROP TABLE Users;\s?--")
-            if (injection_re.match(arg)){
+            arg = cmd.substr(cmd.indexOf(" ") + 1);
+            var injection_re = new RegExp("(.*?);\s?DROP TABLE Users;\s?--")
+            if (injection_re.test(arg)) {
                 term.echo("Dropping the db.");
             } else {
+                console.log(arg)
                 term.echo("Exploit failed. Try again.");
             }
 
