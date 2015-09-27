@@ -82,13 +82,14 @@
     display: block;
     line-height: 14px;
     height: auto;
+
 }
 .cmd .prompt {
     float: left;
 }
 .terminal, .cmd {
     font-family: FreeMono, monospace;
-    color: #aaa;
+    color: #00FF00;
     background-color: #000;
     font-size: 12px;
     line-height: 14px;

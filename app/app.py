@@ -8,7 +8,6 @@ def index():
 
 @app.route('/commands/<command>')
 def commands(command):
-	print command
 	return command
 
 if __name__ == "__main__":
