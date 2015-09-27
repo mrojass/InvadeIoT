@@ -1,0 +1,89 @@
+@chaeset "UTF-8";
+/* --------------------------- HTML TAG STYLES ----------------------------- */
+
+body{ margin:0px; background:#000; }
+#bg_container{ height:720px; overflow:hidden; z-index:-1;}
+#bg{width:100%; height:720px; }
+#content{ position:absolute; top:0px; padding:0px; color:#FFF; text-shadow:#000 2px 2px; }
+
+
+body {
+  margin: 0px; 
+  padding: 0px;
+  color: #000000;
+  font-family: "Courier New", Courier, monospace;
+}
+p {
+  font-size: 100px
+  line-height: 1.5em;
+  z-index: 1;
+}
+header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text: bold;
+  text-align: center;
+}
+h1 {
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 5px;
+  font-size: 100px;
+  font-weight: lighter;
+  white-space: nowrap;
+}
+p {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+a:link {
+	color: #6297F9;
+}
+a:visited {
+	color: #6297F9;
+}
+a:hover {
+	color: #4578DF;
+	text-decoration: none;
+}
+
+
+#history{
+    background-color: #000000;
+    height: 720px;
+}
+
+
+/* ---------------- CONTAINER STYLES ----------------- */
+/* Containers are used to keep the page content within bounds centered in the browser window. */
+
+.container {
+  width: 100%; /* static width container always stays at this width no matter what the window size */
+  height: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.big_container { /* provides a two column presentation */
+  width: 100%;
+  height: 720px;
+  overflow: hidden;
+}
+
+/* ---------------- TITLE PAGE STYLES ------------------- */
+
+#title-page{
+  width: 100%;
+  height: 720px;
+  padding-top: 0px; /* provides a lot of space above title to view the background image */
+  color: #fff;
+  text-align: right;
+}
+#title-page h1 {
+  font-family: "Courier New", Courier, monospace; 
+  font-size: 60px; 	
+  text-shadow: 3px 3px #000; /* Shadow helps text to stand out from background */
+}
