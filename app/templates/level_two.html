@@ -55,16 +55,23 @@ $(function() {
         var finish = false;
         term.set_prompt('> ');
         var args = {command: cmd};
-        var commands = ["help", "hint", "injection"]
+        var commands = ["help", "hint", "inject"]
 
         if(cmd == commands[0]) {
             term.echo("hint \ninject <exploit>");
         } else if (cmd == commands[1]) {
             term.echo("http://xkcd.com/327")
-        } else if (cmd == commands[2]) {
-            console.log("injection")
+        } else if (cmd.split(" ")[0] == commands[2]) {
+            arg = cmd.split(" ")[1];
+            var injection_re = new RegEx("(.*?);\s?DROP TABLE Users;\s?--")
+            if (injection_re.match(arg)){
+                term.echo("Dropping the db.");
+            } else {
+                term.echo("Exploit failed. Try again.");
+            }
+
         } else {
-            console.log("error")
+            term.echo("invalid");
         }
 
     }, {
