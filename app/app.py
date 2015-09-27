@@ -6,6 +6,7 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
+
 @app.route('/level_one')
 def level_one():
 	return render_template("level_one.html")
