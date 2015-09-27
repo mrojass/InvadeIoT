@@ -57,17 +57,33 @@ $(function() {
         if(cmd == commands[0]) {
             term.echo("hint \ninject <SQL code>");
         } else if (cmd == commands[1]) {
-            if (hint_count == 1) {
+            if (hint_count == 0) {
                 term.echo("http://xkcd.com/327");
-            } else if (hint_count == 2) {
+                term.echo("http://bobby-tables.com")
+            } else if (hint_count == 1) {
                 term.echo("http://bfy.tw/1ztw");
+            } else if (hint_count == 2) {
+                var msg = "\nDROP ALL TABLES is the SQL code to all the tables, but I need to inject it into the code.\n"
+                typed_message(term, msg, 30, function() {
+                });
+            } else if (hint_count == 3) {
+                var msg = "\nTo inject it, I need a semicolon before the statement to end the previous statement.\nThen, I need to comment out the code after my injection. \n"
+                typed_message(term, msg, 30, function() {
+                });
             }
+
             hint_count += 1;
         } else if (cmd.split(" ")[0] == commands[2]) {
             arg = cmd.substr(cmd.indexOf(" ") + 1);
-            var injection_re = new RegExp("/(.*?);\s?DROP ALL TABLES;\s?--/g")
+            console.log()
+            var injection_re = new RegExp("(.*?);\\s*DROP\\s*ALL\\s*TABLES\\s*;\\s*--", 'i')
             if (injection_re.test(arg)) {
-                term.echo("Dropping the db.");
+                term.echo("Dropping all tables for the EvilCorp database.");
+                typed_message(term, "\nI knew this would be easy." , 50, function() {
+                setTimeout(function() {
+                    window.location.href="{{ url_for('level_three') }}";
+                }, 3000);
+            });
             } else {
                 term.echo("Exploit failed. Try again.");
             }
@@ -81,7 +97,7 @@ $(function() {
         greetings: null,
         onInit: function(term) {
             // first question
-            var msg = "LEVEL 2: DROP the Bomb\n\nNow that I have that idiot's administrative credentials, I can really start doing some damage. \nHmmm it looks like the leaders of Evil Corp are more dumb than I originally thought. This website doesn’t sanitize their input. \nLooks like all I have to do is create an SQL injection to drop all the tables in the database and erase the debt of all of Evil Corp’s innocent victims. \nEvil Corp is making this too easy for me. It’s like taking candy from a baby.\n"
+            var msg = "LEVEL 2: DROP ALL the Bombs\n\nNow that I have that idiot's administrative credentials, I can really start doing some damage. \nHmmm it looks like the leaders of Evil Corp are dumber than I originally thought. This website doesn’t sanitize their input. \nLooks like all I have to do is create an SQL injection to drop all the tables in the database and erase the debt of all of Evil Corp’s innocent victims. \nEvil Corp is making this too easy for me. It’s like taking candy from a baby.\n"
             typed_message(term, msg, 30, function() {
             });
 

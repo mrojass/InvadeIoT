@@ -60,7 +60,7 @@ $(function() {
             var index = files.indexOf("logs");
             files.splice(index,1);
             term.echo(useColor('white', "logs removed"));
-              typed_message(term, "Congtatulations! you won! " , 50, function() {
+              typed_message(term, "Congratulations! you won! " , 50, function() {
                 setTimeout(function() {
                     window.location.href="{{ url_for('index') }}";
                 }, 5000);
@@ -89,7 +89,7 @@ $(function() {
             var index = files.indexOf("sys32");
             files.splice(index,1);
             term.echo(useColor('red', "honeypot:1339:ERROR.UNAUTHORIZED PRESENCE DETECTED.DETAILS REPORTED:end"));
-              typed_message(term, "got you on camera you dead! the game will restart shortly" , 50, function() {
+            typed_message(term, "got you on camera you dead! the game will restart shortly" , 50, function() {
                 setTimeout(function() {
                     window.location.href="{{ url_for('index') }}";
                 }, 5000);
@@ -113,7 +113,7 @@ $(function() {
         greetings: null,
         onInit: function(term) {
             // first question
-            var msg = "Evil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. A classic phishing scam should do the trick! First, I need to replicate Evil Corp's database log-in site. \n for help use type help";
+            var msg = "LEVEL 3: Log Out\n\nI’ll delete the logs and they’ll never know I was here.\nThe hardest part is over, it’s smooth sailing from here on out. All that’s left to do is dot my I’s and cross my T’s.\nI need to delete anything that could alert Evil Corp that I’m the mastermind behind setting their customers free of debt.\nHmmmm maybe I should delete sys32. That would ensure they never found me.\n";
             typed_message(term, msg, 30, function() {
             });
         },
