@@ -51,24 +51,21 @@ $(function() {
         var finish = false;
         term.set_prompt('> ');
         var args = {command: cmd};
+        var help = "wget <url>\nsendmail <email>"
         if(cmd.toString() == 'help'){
-            term.echo("help\nwget <url> \nsend <email>");
+            term.echo(useColor('white', help));
         }
         if(cmd.toString() == 'wget http://www.evilcorp.com'){
-            term.echo("Cloned http://www.evilcorp.com");
-            typed_message(term, "Hmmm we got it! Now we have to do something else! ", 50, function() {
+            term.echo(useColor('white',"Cloned http://www.evilcorp.com"));
+            typed_message(term, "Hmmm we got it! Now we have to do something else!" , 50, function() {
             });
-
         }
-      
-
-
     }, {
         name: 'xxx',
         greetings: null,
         onInit: function(term) {
             // first question
-            var msg = "Evil Corp has taken too much away from the people. We haven’t opened our eyes to the invisible guys.\nThe top 1% of the top 1%. Those who control everything without being noticed by a single person. The ones who can change everything about your life with nothing more than a thought. And these people, this corporation, they take away so much from us and we don’t even know. Evil Corp must be taught that we’re not sheep. They carelessly handle our information, our whole lives, but we’re not unarmed. We have the skills to take them on. We can make a difference, you can make a difference.";
+            var msg = "Evil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. A classic phising scam should do the trick! First, I need to replicate Evil Corp's database log-in site. \n Press help for a list of commands";
             typed_message(term, msg, 30, function() {
             });
         },
@@ -80,6 +77,23 @@ $(function() {
         }
     });
 });
+
+
+function useColor(color, text){
+    var string;
+    switch(color){
+        case 'red': string = "\033[0;31m" + text + "\033[0m";
+            break;
+        case 'green': string = "\033[0;32m" + text + "\033[0m";
+            break;
+        case 'white': string = "\033[1;37m" + text + "\033[0m";
+            break;
+        default:
+            break;
+    }
+
+    return string;
+}
 	
 </script>
 
