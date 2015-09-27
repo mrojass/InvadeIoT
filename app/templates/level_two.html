@@ -70,6 +70,10 @@ $(function() {
                 var msg = "\nTo inject it, I need a semicolon before the statement to end the previous statement.\nThen, I need to comment out the code after my injection. \n"
                 typed_message(term, msg, 30, function() {
                 });
+            } else {
+               var msg = "\nI know! ; DROP ALL TABLES;--\n"
+               typed_message(term, msg, 30, function() {
+                }); 
             }
 
             hint_count += 1;
@@ -78,18 +82,18 @@ $(function() {
             console.log()
             var injection_re = new RegExp("(.*?);\\s*DROP\\s*ALL\\s*TABLES\\s*;\\s*--", 'i')
             if (injection_re.test(arg)) {
-                term.echo("Dropping all tables for the EvilCorp database.");
+                term.echo(useColor('white',"Dropping all tables for the EvilCorp database."));
                 typed_message(term, "\nI knew this would be easy." , 50, function() {
                 setTimeout(function() {
                     window.location.href="{{ url_for('level_three') }}";
                 }, 3000);
             });
             } else {
-                term.echo("Exploit failed. Try again.");
+                term.echo(useColor('white', "Exploit failed. Try again."));
             }
 
         } else {
-            term.echo("invalid");
+            term.echo(useColor('red', "invalid"));
         }
 
     }, {
