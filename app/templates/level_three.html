@@ -10,7 +10,7 @@
 <body>
 
 <script type="text/javascript">
-var files=["/bin", "/etc", "logs", "config"];
+var files=["/bin", "/etc", "config", "logs", "sys32"];
 $(function() {
     var anim = false;
     function typed(finish_typing) {
@@ -78,6 +78,12 @@ $(function() {
             var index = files.indexOf("/etc");
             files.splice(index,1);
             term.echo(useColor('white', "/etc removed"));
+        }
+
+        else if(cmd.toString()=='rm sys32'){
+            var index = files.indexOf("sys32");
+            files.splice(index,1);
+            term.echo(useColor('red', "honeypot:1339:ERROR.UNAUTHORIZED PRESENCE DETECTED.DETAILS REPORTED:end"));
         }
 
         else if(cmd.toString()=='ls'){
