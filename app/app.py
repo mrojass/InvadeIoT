@@ -16,7 +16,7 @@ def level_two():
 	return render_template("level_two.html")
 
 @app.route('/level_three')
-def level_two():
+def level_three():
 	return render_template("level_three.html")
 
 if __name__ == "__main__":
