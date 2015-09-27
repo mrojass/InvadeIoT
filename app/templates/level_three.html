@@ -60,6 +60,11 @@ $(function() {
             var index = files.indexOf("logs");
             files.splice(index,1);
             term.echo(useColor('white', "logs removed"));
+              typed_message(term, "Congtatulations! you won! " , 50, function() {
+                setTimeout(function() {
+                    window.location.href="{{ url_for('index') }}";
+                }, 5000);
+            });
         }
 
         else if(cmd.toString()=='rm config'){
@@ -84,6 +89,12 @@ $(function() {
             var index = files.indexOf("sys32");
             files.splice(index,1);
             term.echo(useColor('red', "honeypot:1339:ERROR.UNAUTHORIZED PRESENCE DETECTED.DETAILS REPORTED:end"));
+              typed_message(term, "got you on camera you dead! the game will restart shortly" , 50, function() {
+                setTimeout(function() {
+                    window.location.href="{{ url_for('index') }}";
+                }, 5000);
+            });
+
         }
 
         else if(cmd.toString()=='ls'){
