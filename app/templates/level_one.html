@@ -70,7 +70,10 @@ $(function() {
         }
         else if (cmd.toString()=='sendmail bob@evilcorp.com' && step1==true){
             term.echo(useColor('white',"Email sent to bob@evilcorp.com"));
-             typed_message(term, "" , 50, function() {
+             typed_message(term, "We sent him the email! In 3 seconds we will be redirected to level2!" , 50, function() {
+                setTimeout(function() {
+                    window.location.href="{{ url_for('level_two') }}"
+                }, 3000);
             });
         }
         else {
@@ -81,7 +84,7 @@ $(function() {
         greetings: null,
         onInit: function(term) {
             // first question
-            var msg = "Evil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. A classic phishing scam should do the trick! First, I need to replicate Evil Corp's database log-in site. \n for help use type help";
+            var msg = "Evil Corp's destruction will begin with conning one of their incompetent executives into sharing their administrative log-in credentials with me. A classic phishing scam should do the trick! First, I need to replicate Evil Corp's database log-in site. \n for help use type help and for a hint type hint";
             typed_message(term, msg, 30, function() {
             });
         },
