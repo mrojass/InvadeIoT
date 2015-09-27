@@ -43,11 +43,7 @@ $(function() {
     var typed_message = typed(function(term, message, prompt) {
         term.set_command('');
         term.echo(message)
-        term.set_prompt(prompttyped(function(term, message, prompt) {
-            term.set_command('');
-            term.echo(message);
-            term.set_prompt(prompt);
-        }));
+        term.set_prompt(prompt);
     });
 
     
@@ -55,17 +51,6 @@ $(function() {
         var finish = false;
         term.set_prompt('> ');
         var args = {command: cmd};
-        var commands = ["help", "hint", "injection"]
-
-        if(cmd == commands[0]) {
-            term.echo("hint \ninject <exploit>");
-        } else if (cmd == commands[1]) {
-            term.echo("http://xkcd.com/327")
-        } else if (cmd == commands[2]) {
-            console.log("injection")
-        } else {
-            console.log("error")
-        }
 
     }, {
         name: 'xxx',
@@ -74,7 +59,10 @@ $(function() {
         height: 300,
         onInit: function(term) {
             // first question
-            var msg = "Level Two";
+            var msg = "Level 3";
+            typed_message(term, msg, 50, function() {
+                typed_prompt(term, "what's your name:", 100);
+            });
         },
         keydown: function(e) {
             //disable keyboard when animating
