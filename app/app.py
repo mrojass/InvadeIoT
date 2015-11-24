@@ -20,4 +20,4 @@ def level_three():
 	return render_template("level_three.html")
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=False)
